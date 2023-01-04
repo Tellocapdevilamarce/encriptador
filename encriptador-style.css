@@ -1,0 +1,63 @@
+
+body{
+    background-color: rgba(0, 26, 255, 0.753);
+    background-image: url('encriptacion.jpg');
+    background-size: cover;
+}
+p{
+    margin-top: 50px;
+    color: rgb(229, 255, 0);
+    font-size: larger;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p:before{
+    content: '⚠  ';
+    color : rgb(255, 102, 0);
+}
+
+
+.contenedor-texto{
+    display: flex;
+    margin-top: 30px;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.contenedor-boton{
+    margin-top: 10px;
+    margin-inline: 100px;
+    display: flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botones{
+    background-color: rgb(7, 223, 72);
+    font-weight: bolder;
+    height: 40px;
+    width: 170px;
+    border-radius: 5px;
+    font-size: larger;
+}
+
+#enc:before{
+    content: '🔐';
+}
+
+#desc:before{
+    content: '🔓';
+}
+
+#codificar, #decodificar{
+    border-radius: 10px;
+    border: 5px solid black;
+}
