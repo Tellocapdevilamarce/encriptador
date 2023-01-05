@@ -27,18 +27,24 @@
             <button  class='botones' type='button' id = 'enc'>Encriptar</button><br><br>
                     
         </div>
-                            
-        <div class='contenedor-texto'>
-                        
-            <textarea  id='decodificar' cols = '60' rows = '10' type='text'  placeholder='Aqui se visualizara el texto encriptado' ></textarea>
-                        
-        </div>
-                    
+        
         <div class='contenedor-boton'>
                         
             <button class='botones' type='button' id = 'desc'>Desencriptar</button>
                         
         </div>
+        <div class='contenedor-texto'>
+                        
+            <textarea  id='decodificar' cols = '60' rows = '10' type='text'  placeholder='Aqui se visualizara el texto encriptado/desencriptado' ></textarea>
+                        
+        </div>
+
+        <div class='contenedor-boton'>
+                        
+            <button class='botones' type='button' id = 'copiar'>copiar</button>
+                        
+        </div>
+                    
 
     <script>
 
@@ -109,27 +115,45 @@
             
             let valor = encriptar(texto)
 
-            document.getElementById('decodificar').innerHTML = valor.join('') ;
+            document.getElementById('decodificar').value = valor.join('') ;
+
+            document.getElementById('codificar').value = '' ;
             
         }
 
         function eventoDesencriptar(){
  
-            let deco = document.getElementById('decodificar').value ; 
+            let deco = document.getElementById('codificar').value ; 
 
             let texto =  desencriptar(deco).join('') ;
 
-            document.getElementById('decodificar').innerHTML = texto 
+            document.getElementById('decodificar').value = texto ;
+
+            document.getElementById('codificar').value = '' ;
 
         }
         
+        function eventoCopiar(){
+
+            let texto = document.getElementById('decodificar').value ;
+
+            document.getElementById('codificar').value = texto ;
+
+            document.getElementById('decodificar').value = '' ;
+
+        }
+
         var buttonEncriptar = document.getElementById('enc') ;
 
         var buttonDesencriptar = document.getElementById('desc') ;
+
+        var buttonCopiar = document.getElementById('copiar') ;
         
         buttonEncriptar.onclick = eventoEncriptar ;
         
-         buttonDesencriptar.onclick = eventoDesencriptar ;
+        buttonDesencriptar.onclick = eventoDesencriptar ;
+
+        buttonCopiar.onclick = eventoCopiar ;
        
     </script>
 
