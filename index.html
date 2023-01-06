@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="encriptador-style.css">
+    <title>Encriptador</title>
+
+    
+</head>
+
+<body>
+
+    <main>
+
+        <header>
+
+                <img src="logo alura.jfif" alt="logo de alura" id='logo'>
+                
+        </header>
+
+            
+                <div class='contenedor-texto'>
+                                
+                    <textarea  id='codificar' cols = '60' rows = '10' type='text'  placeholder='ingresar texto sin acentos, numeros u otro caracter especial' ></textarea>
+                
+                </div>
+
+                <div class='contenedor-boton'>
+                            
+                    <button  class='botones' type='button' id = 'enc'>Encriptar</button><br><br>
+                            
+                </div>
+                
+                <div class='contenedor-boton'>
+                                
+                    <button class='botones' type='button' id = 'desc'>Desencriptar</button>
+                                
+                </div>
+                <div class='contenedor-texto'>
+                                
+                    <textarea  id='decodificar' cols = '60' rows = '10' type='text'  placeholder='Aqui se visualizara el texto encriptado/desencriptado' ></textarea>
+                                
+                </div>
+
+                <div class='contenedor-boton'>
+                                
+                    <button class='botones' type='button' id = 'copiar'>copiar</button>
+                                
+                </div>
+                <div class='instrucciones'>
+        
+                    <h3 class='margin-instrucciones'>  Instrucciones para encriptado</h3>
+                    <ol>
+                        <li>Introducir el texto en el cuadro superior</li>
+                        <li>Hacer click en el boton encriptar</li>
+                    </ol>
+        
+                    <h3 class='margin-instrucciones'>  Instrucciones para desencriptar</h3>
+                    <ol>
+                        <li>Hacer click en el boton copiar</li>
+                        <li>Hacer click en el boton desencriptar </li>
+                    </ul>
+        
+                </div>
+
+                    
+
+    <script>
+
+        function encriptar(codificar){
+
+
+            for(let i = 0; i <= codificar.length; i++){
+                switch (codificar[i]) {
+                    case 'a':
+                        codificar[i] = 'ai';
+                        break;
+                    case 'e':
+                        codificar[i] = 'enter';
+                        break;
+                    case 'i':
+                        codificar[i] = 'imes';
+                        break;
+                    case 'o':
+                        codificar[i] = 'ober';
+                        break;
+                    case 'u':                    
+                        codificar[i] = 'ufat';
+                        break;
+                }
+    
+            }
+
+            return codificar;
+        }
+
+        function desencriptar(decodificar){
+            let arr = []
+            for(let i = 0; i <= decodificar.length; i++){
+                    switch (decodificar[i]) {
+                            case 'a':
+                                arr.push('a');
+                                i += 1;
+                                break;
+                            case 'e':
+                                arr.push('e');
+                                i += 4;
+                                break;
+                            case 'i':
+                                arr.push('i');
+                                i += 3;
+                                break;
+                            case 'o':
+                                arr.push('o');
+                                i += 3;
+                                break;
+                            case 'u':                    
+                                arr.push('u');
+                                i += 3;
+                                break;
+                            default:    
+                                arr.push(decodificar[i])            
+                                
+                        }
+            
+            }
+
+            return arr;
+        }
+
+        function eventoEncriptar(){
+
+            let texto = document.getElementById('codificar').value.split('') ;
+
+            document.getElementById('decodificar').value = encriptar(texto).join('') ;
+
+            document.getElementById('codificar').value = '' ;
+            
+        }
+
+        function eventoDesencriptar(){
+ 
+            let deco = document.getElementById('codificar').value ; 
+
+            document.getElementById('decodificar').value = desencriptar(deco).join('') ;
+
+            document.getElementById('codificar').value = '' ;
+
+        }
+        
+        function eventoCopiar(){
+
+            let texto = document.getElementById('decodificar').value ;
+
+            document.getElementById('codificar').value = texto ;
+
+            document.getElementById('decodificar').value = '' ;
+
+        }
+
+        var buttonEncriptar = document.getElementById('enc') ;
+
+        var buttonDesencriptar = document.getElementById('desc') ;
+
+        var buttonCopiar = document.getElementById('copiar') ;
+        
+        buttonEncriptar.onclick = eventoEncriptar ;
+        
+        buttonDesencriptar.onclick = eventoDesencriptar ;
+
+        buttonCopiar.onclick = eventoCopiar ;
+       
+    </script>
+
+    </main>
+    
+</body>
+
+</html>
