@@ -39,7 +39,7 @@
                 </div>
                 <div class='contenedor-texto'>
                                 
-                    <textarea  id='decodificar' cols = '60' rows = '10' type='text'  placeholder='Aqui se visualizara el texto encriptado/desencriptado' ></textarea>
+                    <textarea  id='decodificar' cols = '60' rows = '10' type='text'  placeholder='Aqui se visualizara el texto encriptado/desencriptado en minusculas' ></textarea>
                                 
                 </div>
 
@@ -68,9 +68,15 @@
 
     <script>
 
+        function minuscula(texto){
+
+            let minus = texto.toLowerCase() ;
+            return minus ; 
+
+        }
+
         function encriptar(codificar){
-
-
+           
             for(let i = 0; i <= codificar.length; i++){
                 switch (codificar[i]) {
                     case 'a':
@@ -96,7 +102,9 @@
         }
 
         function desencriptar(decodificar){
+
             let arr = []
+
             for(let i = 0; i <= decodificar.length; i++){
                     switch (decodificar[i]) {
                             case 'a':
@@ -131,9 +139,11 @@
 
         function eventoEncriptar(){
 
-            let texto = document.getElementById('codificar').value.split('') ;
+            let texto = document.getElementById('codificar').value
 
-            document.getElementById('decodificar').value = encriptar(texto).join('') ;
+            let textoMinus = minuscula(texto).split('') ;
+
+            document.getElementById('decodificar').value = encriptar(textoMinus).join('') ;
 
             document.getElementById('codificar').value = '' ;
             
