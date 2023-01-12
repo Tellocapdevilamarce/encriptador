@@ -22,7 +22,7 @@
             
                 <div class='contenedor-texto'>
                                 
-                    <textarea  id='codificar' cols = '60' rows = '10' type='text'  placeholder='ingresar texto sin acentos, numeros u otro caracter especial' ></textarea>
+                    <textarea  id='codificar' cols = '60' rows = '10' type='text'  placeholder='ingresar texto sin acentos, numeros u otro caracter especial' autofocus></textarea>
                 
                 </div>
 
@@ -39,7 +39,7 @@
                 </div>
                 <div class='contenedor-texto'>
                                 
-                    <textarea  id='decodificar' cols = '60' rows = '10' type='text'  placeholder='Aqui se visualizara el texto encriptado/desencriptado en minusculas' ></textarea>
+                    <textarea  id='decodificar' cols = '60' rows = '10' type='text'  ></textarea>
                                 
                 </div>
 
@@ -67,13 +67,6 @@
                     
 
     <script>
-
-        function minuscula(texto){
-
-            let minus = texto.toLowerCase() ;
-            return minus ; 
-
-        }
 
         function encriptar(codificar){
            
@@ -141,15 +134,19 @@
 
             let texto = document.getElementById('codificar').value
 
-            let textoMinus = minuscula(texto).split('') ;
+            let textoMinus = texto.toLowerCase().split('') ;
 
             document.getElementById('decodificar').value = encriptar(textoMinus).join('') ;
 
             document.getElementById('codificar').value = '' ;
+
+            document.getElementById('decodificar').style.backgroundImage = 'none'
             
         }
 
         function eventoDesencriptar(){
+
+            document.getElementById('decodificar').style.backgroundImage = 'none'  ;
  
             let deco = document.getElementById('codificar').value ; 
 
@@ -157,16 +154,19 @@
 
             document.getElementById('codificar').value = '' ;
 
+
         }
         
         function eventoCopiar(){
 
+            
             let texto = document.getElementById('decodificar').value ;
-
+            
             document.getElementById('codificar').value = texto ;
-
+            
             document.getElementById('decodificar').value = '' ;
-
+            
+            document.getElementById('decodificar').style.backgroundImage =  'url("mensaje encriptado.png")'
         }
 
         var buttonEncriptar = document.getElementById('enc') ;
@@ -180,6 +180,8 @@
         buttonDesencriptar.onclick = eventoDesencriptar ;
 
         buttonCopiar.onclick = eventoCopiar ;
+
+        
        
     </script>
 
