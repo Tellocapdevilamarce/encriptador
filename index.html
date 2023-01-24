@@ -67,74 +67,50 @@
     <script>
 
         function encriptar(codificar){
+
+            let key = [ ['e','enter'], ['i','imes'], ['a','ai'],['o','ober'], ['u','ufat']] ;   
+            
+            let encriptado = codificar;
            
-            for(let i = 0; i <= codificar.length; i++){
-                switch (codificar[i]) {
-                    case 'a':
-                        codificar[i] = 'ai';
-                        break;
-                    case 'e':
-                        codificar[i] = 'enter';
-                        break;
-                    case 'i':
-                        codificar[i] = 'imes';
-                        break;
-                    case 'o':
-                        codificar[i] = 'ober';
-                        break;
-                    case 'u':                    
-                        codificar[i] = 'ufat';
-                        break;
-                }
-    
+            for(let i = 0; i < key.length; i++){
+                    
+                    if(encriptado.includes(key[i][0])){
+
+                        encriptado = encriptado.replaceAll(key[i][0],key[i][1])
+                    }
+                       
             }
 
-            return codificar;
+            return encriptado;
         }
+
+
 
         function desencriptar(decodificar){
 
-            let arr = []
+            let key = [['e','enter'], ['i','imes'],['a','ai'], ['o','ober'], ['u','ufat']] ;
 
-            for(let i = 0; i <= decodificar.length; i++){
-                    switch (decodificar[i]) {
-                            case 'a':
-                                arr.push('a');
-                                i += 1;
-                                break;
-                            case 'e':
-                                arr.push('e');
-                                i += 4;
-                                break;
-                            case 'i':
-                                arr.push('i');
-                                i += 3;
-                                break;
-                            case 'o':
-                                arr.push('o');
-                                i += 3;
-                                break;
-                            case 'u':                    
-                                arr.push('u');
-                                i += 3;
-                                break;
-                            default:    
-                                arr.push(decodificar[i])            
-                                
-                        }
-            
+            let desencriptado = decodificar;
+
+            for(let i = 0; i < key.length; i++){
+                    
+                if(desencriptado.includes(key[i][1])){
+
+                    desencriptado = desencriptado.replaceAll(key[i][1],key[i][0]) ;
+                }       
             }
 
-            return arr;
+            return desencriptado ;
         }
+
 
         function eventoEncriptar(){
 
             let texto = document.getElementById('codificar').value
 
-            let textoMinus = texto.toLowerCase().split('') ;
+            let textoMinus = texto.toLowerCase() ;
 
-            document.getElementById('decodificar').value = encriptar(textoMinus).join('') ;
+            document.getElementById('decodificar').value = encriptar(textoMinus) ;
 
             document.getElementById('codificar').value = '' ;
 
@@ -148,7 +124,7 @@
  
             let deco = document.getElementById('codificar').value ; 
 
-            document.getElementById('decodificar').value = desencriptar(deco).join('') ;
+            document.getElementById('decodificar').value = desencriptar(deco);
 
             document.getElementById('codificar').value = '' ;
 
